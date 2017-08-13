@@ -1,0 +1,24 @@
+@model BankAccounts.Models.UsersView
+@{
+        foreach(var error in ViewBag.errors)
+            {
+                if(@error.Errors.Count > 0)
+                {
+                    <p>@error.Errors[0].ErrorMessage</p>
+                }
+            }
+ }
+<h1>Registration</h1>
+<form asp-controller="User" asp-action="Register" method="post">
+    <label asp-for="FirstName"></label>
+    <input asp-for="FirstName"/><br>
+    <label asp-for="LastName"></label>
+    <input asp-for="LastName"/><br>
+    <label asp-for="Email"></label>
+    <input asp-for="Email"/><br>
+    <label asp-for="Password"></label>
+    <input asp-for="Password" type="password"/><br>
+    <label asp-for="ConfirmPassword"></label>
+    <input asp-for="ConfirmPassword"type="password"><br>
+    <button type="submit">Create new User</button>
+</form>

@@ -1,0 +1,37 @@
+@using System.Linq;
+<a asp-controller="User" asp-action="Logout">Logout</a>
+@{
+        foreach(var error in ViewBag.Errors)
+            {
+                
+                    <p>@error</p>
+                
+            }
+ }
+
+<h1>Welcome, @ViewBag.user[0].FirstName</h1>
+<form asp-controller="Account" asp-action="Transaction" method="post">
+    <label for="transact">Deposit/Withdraw</label>
+    <input name="transact" type="number"/>
+    <input type="hidden" name="AcId" value=@ViewBag.CurrentBalance.AccountsId>
+    <input type="hidden" name="Balance" value=@ViewBag.CurrentBalance.Accounts.CurrentBalance>
+    <button type="submit" >Submit</button>
+</form>
+<h2>CurrentBalance @ViewBag.CurrentBalance.Accounts.CurrentBalance</h2>
+<table>
+    <tr>
+        <th>Amount</th>
+        <th>Date</th>
+    </tr>
+@foreach(var account in ViewBag.JointAccounts)
+{
+    <tr>
+        <td>@account.Accounts.Transaction</td>
+        <td>@account.Accounts.UpdatedAt</td>
+    </tr>
+}
+
+        
+  
+    
+</table>
